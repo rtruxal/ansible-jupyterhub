@@ -1,8 +1,9 @@
 ---
 - hosts: all
-
+  gather_facts: yes
   vars:
     nossl: False
+    NODEJS_VERSION: "8"
 
   vars_prompt:
     - name: "jupyterpw"
