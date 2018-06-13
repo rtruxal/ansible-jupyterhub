@@ -1,6 +1,23 @@
 ---
 # file: roles/jupyter/tasks/main.yml
 
+- name: Install the gpg key for nodejs LTS
+  become: yes
+  become_method: sudo
+  apt_key:
+    url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+    state: present
+  tags: jupyter
+
+- name: Install the nodejs LTS repos
+  become: yes
+  become_method: sudo
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/node_{{ NODEJS_VERSION }}.x {{ ansible_distribution_release }} main"
+    state: present
+    update_cache: yes
+  tags: jupyter
+
 - name: make sure necessary packages are installed
   apt: name={{item}} state=present update_cache=yes
   with_items: "{{jupyter_pkgs}}"
