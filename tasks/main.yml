@@ -88,19 +88,19 @@
   tags: jupyter
 
 - name: set IP address
-  lineinfile: dest=/etc/jupyterhub/jupyterhub_config.py line="c.JupyterHub.hub_ip = '{{ansible_eno1.ipv4.address}}'"
+  lineinfile: dest=/etc/jupyterhub/jupyterhub_config.py line="c.JupyterHub.hub_ip = '{{ansible_default_ipv4.address}}'"
   become: yes
   become_method: sudo
   tags: jupyter
 
 - name: set IP address
-  lineinfile: dest=/etc/jupyterhub/jupyterhub_config.py line="c.JupyterHub.ip = '{{ansible_eno1.ipv4.address}}'"
+  lineinfile: dest=/etc/jupyterhub/jupyterhub_config.py line="c.JupyterHub.ip = '{{ansible_default_ipv4.address}}'"
   become: yes
   become_method: sudo
   tags: jupyter
 
 - name: set IP address
-  lineinfile: dest=/etc/jupyterhub/jupyterhub_config.py line="c.JupyterHub.proxy_api_ip = '{{ansible_eno1.ipv4.address}}'"
+  lineinfile: dest=/etc/jupyterhub/jupyterhub_config.py line="c.JupyterHub.proxy_api_ip = '{{ansible_default_ipv4.address}}'"
   become: yes
   become_method: sudo
   tags: jupyter
